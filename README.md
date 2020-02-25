@@ -1,4 +1,2 @@
 # online-resume-template
-- [简历1](https://jirengu.github.io/online-resume-template/resume1.html)
-- [简历2](https://jirengu.github.io/online-resume-template/resume2.html)
-- [简历3](https://jirengu.github.io/online-resume-template/resume3.html)
+- [简历](https://myl2017.github.io/online-resume/resume1.html)

@@ -1,393 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>在线简历</title>
-  <link rel="stylesheet" href="https://at.alicdn.com/t/font_908787_kekc8lrkg7e.css">
-  <style>
-    /*css reset*/ 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    } 
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在线简历</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_908787_kekc8lrkg7e.css">
+    <style>
+        /*css reset*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    a {
-      text-decoration: none;
-      color: #333;
-    }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
 
-    /*common css  */
-    .pill {
-      background: #000;
-      color: #fff;
-      display: inline-block;
-      font-size: 14px;
-      width: 140px;
-      line-height: 20px;
-      text-align: center;
-      border-radius: 20px;;
-    }
+        /*common css  */
+        .pill {
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            font-size: 14px;
+            width: 140px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 20px;;
+        }
 
-    .layout {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+        .layout {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-    .clearfix::after {
-      content: '';
-      display: block;
-      clear: both;
-    }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
 
-    /* page css*/
-    body {
-      font: 16px/1.5 SimSun, STKaiti, "Microsoft YaHei", SimHei, Helvetica, Arial;
-      color: #333;
-    }
-    
-    .wrapper {
-      background-color: #ececec;
-      margin-top: 30px;
-      margin-bottom: 30px;
-      padding-top: 40px;
-    }
+        /* page css*/
+        body {
+            font: 16px/1.5 SimSun, STKaiti, "Microsoft YaHei", SimHei, Helvetica, Arial;
+            color: #333;
+        }
 
-    .aside {
-      float: left;
-      width: 280px;
-    }
+        .wrapper {
+            background-color: #ececec;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding-top: 40px;
+        }
 
-    .aside .user {
-      text-align: center;
-      padding-bottom: 20px;
-    }
+        .aside {
+            float: left;
+            width: 280px;
+        }
 
-    .aside .user h1{
-      font-size: 40px;
-    }
+        .aside .user {
+            text-align: center;
+            padding-bottom: 20px;
+        }
 
-    .aside .user h1::after {
-      content: '';
-      display: block;
-      width: 60px;
-      border-top: 1px solid #d6d6d6;
-      margin: 16px auto;
-    }
+        .aside .user h1 {
+            font-size: 40px;
+        }
 
-    .aside .user::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
-      margin-top: 20px;
-      border-top: 20px solid #d6d6d6;
-      border-bottom: 20px solid transparent;
-      border-right: 140px solid #d6d6d6;
-      border-left: 140px solid transparent;
-    }
+        .aside .user h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            border-top: 1px solid #d6d6d6;
+            margin: 16px auto;
+        }
 
-    .aside .contact {
-      padding: 20px;
-    }
+        .aside .user::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            margin-top: 20px;
+            border-top: 20px solid #d6d6d6;
+            border-bottom: 20px solid transparent;
+            border-right: 140px solid #d6d6d6;
+            border-left: 140px solid transparent;
+        }
 
-    .aside .contact li {
-      border-bottom: 1px solid #d6d6d6;
-      list-style: none;
-      line-height: 40px;
-    }
+        .aside .contact {
+            padding: 20px;
+        }
 
-    .aside .contact .iconfont {
-      border-right: 1px solid #d6d6d6;
-      padding-right: 10px;
-      margin-right: 10px;
-      padding-left: 10px;
-      display: inline-block;
-      font-size: 20px;
-      color: #7bbaaa;
-    }
+        .aside .contact li {
+            border-bottom: 1px solid #d6d6d6;
+            list-style: none;
+            line-height: 40px;
+        }
 
-    .aside .skills {
-      background: #7bbaaa;
-      padding: 20px;
-      color: #fff;
-    }
+        .aside .contact .iconfont {
+            border-right: 1px solid #d6d6d6;
+            padding-right: 10px;
+            margin-right: 10px;
+            padding-left: 10px;
+            display: inline-block;
+            font-size: 20px;
+            color: #7bbaaa;
+        }
 
-    .aside .skills dt {
-      color: #eee;
-      margin-top: 20px;
-    }
+        .aside .skills {
+            background: #7bbaaa;
+            padding: 20px;
+            color: #fff;
+        }
 
-    .aside .skills dd {
-      height: 4px;
-      background: #74c5b5;
-      border-radius: 2px;
-      margin-top: 10px;
-    }
+        .aside .skills dt {
+            color: #eee;
+            margin-top: 20px;
+        }
 
-    .aside .skills .mastery {
-      height: 4px;
-      background: #fff;
-      display: block;
-      border-radius: 2px;
-    }
+        .aside .skills dd {
+            height: 4px;
+            background: #74c5b5;
+            border-radius: 2px;
+            margin-top: 10px;
+        }
 
-    .aside .others h2 {
-      margin: 20px 0 0 20px;
-    }
+        .aside .skills .mastery {
+            height: 4px;
+            background: #fff;
+            display: block;
+            border-radius: 2px;
+        }
 
-    .main {
-      margin-left: 280px;
-      background: #fff;
-      padding: 40px;
-      margin-right: 20px;
-    }
+        .aside .others h2 {
+            margin: 20px 0 0 20px;
+        }
 
-    .main .intro {
-      overflow: auto;
-    }
-    .main .intro img {
-      width: 80px;
-      height: 80px;
-      float: left;
-    }
+        .main {
+            margin-left: 280px;
+            background: #fff;
+            padding: 40px;
+            margin-right: 20px;
+        }
 
-    .main .intro p {
-      margin-left: 120px;
-    }
+        .main .intro {
+            overflow: auto;
+        }
 
-    .section {
-    }
-    
-    .section .pill {
-      float: left;
-      margin-top: 5px;
-    }
+        .main .intro img {
+            width: 80px;
+            height: 80px;
+            float: left;
+        }
 
-    .section h2{
-      font-size: 40px;
-      color: #d9d9d9;
-      text-align: center;
-      margin-top: 30px;
-    }
+        .main .intro p {
+            margin-left: 120px;
+        }
 
-    .section .more {
-      margin-left: 150px;
-      border-left: 1px solid #eee;
-    }
-    .section h3 {
-      color: #666;
-      font-size: 20px;
-      font-weight: normal;
-    }
-    .section h3 strong{
-      color: #111;
-      font-weight: bold;
-    }
+        .section {
+        }
 
-    .section h3::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 6px;
-      border: 2px solid #7bbaaa;
-      margin-right: 20px;
-      position: relative;
-      left: -5px;
-    }
+        .section .pill {
+            float: left;
+            margin-top: 5px;
+        }
 
-    .section h4 {
-      color: #111;
-      margin-top: 20px;
-      margin-left: 40px;
-    }
+        .section h2 {
+            font-size: 38px;
+            color: #d9d9d9;
+            text-align: center;
+            margin-top: 20px;
+        }
 
+        .section .more {
+            margin-left: 150px;
+            border-left: 1px solid #eee;
+        }
 
-    .section .more ul {
-      margin-left: 50px;
-      padding-bottom: 20px;
-    }
-    .section .more li {
-      color: #666;
-      font-size: 14px;
-    }
+        .section h3 {
+            color: #666;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .section h3 strong {
+            color: #111;
+            font-weight: bold;
+        }
+
+        .section h3::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            border: 2px solid #7bbaaa;
+            margin-right: 20px;
+            position: relative;
+            left: -5px;
+        }
+
+        .section h4 {
+            color: #111;
+            margin-top: 20px;
+            margin-left: 40px;
+        }
 
 
-    @media print {
-      .aside {
-        width: 200px;
-      }
-      .main {
-        margin-left: 200px;
-      }
-      .aside .user::after {
-      border-right-width: 100px;
-      border-left-width: 100px;
-    }
-      .pill {
-        display: none;
-      }
+        .section .more ul {
+            margin-left: 50px;
+            padding-bottom: 20px;
+        }
 
-      .section .more {
-        margin-left: 20px;
-      }
+        .section .more li {
+            color: #666;
+            font-size: 14px;
+        }
 
-      .wrapper {
-        margin: 0;
-      }
-    }
+        @media screen and (max-width: 768px) {
+            .wrapper {
+                margin-top: 0;
+            }
 
-    
+            .aside {
+                float: none;
+                width: auto;
+            }
+
+            .aside .user::after {
+                border-right: 40vw solid #d6d6d6;
+                border-left: 60vw solid transparent;
+            }
+
+            .main {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .main .intro p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+            }
+
+            .section .pill {
+                float: none;
+                margin-left: 2%;
+                margin-bottom: 16px;
+            }
+
+            .section .more {
+                margin-left: 0;
+            }
+
+        }
 
 
-  
-  </style>
+        @media print {
+            .aside {
+                width: 200px;
+            }
+
+            .main {
+                margin-left: 200px;
+            }
+
+            .aside .user::after {
+                border-right-width: 100px;
+                border-left-width: 100px;
+            }
+
+            .pill {
+                display: none;
+            }
+
+            .section .more {
+                margin-left: 20px;
+            }
+
+            .wrapper {
+                margin: 0;
+            }
+        }
+
+
+    </style>
 </head>
 <body>
-  <div class="wrapper layout clearfix">
+<div class="wrapper layout clearfix">
     <div class="aside">
-      <div class="user">
-        <h1>饥人谷</h1>
-        <p>应聘前端工程师</p>
-      </div>
-      <ul class="contact">
-        <li><span class="iconfont icon-email"></span> hunger@jirengu.com</li>
-        <li><span class="iconfont icon-phone"></span> 13066668888</li>
-        <li><span class="iconfont icon-experience"></span> 1年前端经验</li>
-        <li><span class="iconfont icon-education"></span> 本科</li>
-      </ul>
-      <div class="skills">
-          <h2>我的技能</h2>
-          <dl>
-            <dt>JavaScript/HTML5/CSS3/SVG</dt>
-            <dd><span class="mastery" style="width: 90%"></span></dd>
-            <dt>Vue/Vuex/Vue-router</dt>
-            <dd><span class="mastery" style="width: 80%"></span></dd>
-            <dt>Node.js</dt>
-            <dd><span class="mastery" style="width: 50%"></span></dd>
-            <dt>Webpack/Parcel/Npm Script</dt>
-            <dd><span class="mastery" style="width: 70%"></span></dd>
-            <dt>ES6/Sass/PostCSS/Babel</dt>
-            <dd><span class="mastery" style="width: 70%"></span></dd>
-          </dl>
+        <div class="user">
+            <h1>孟艳丽</h1>
+            <p>应聘前端工程师</p>
         </div>
-      <div class="others">
-        <h2>其他</h2>
         <ul class="contact">
-            <li><span class="iconfont icon-github"></span> <a href="https://jirengu.com">Github</a></li>
-            <li><span class="iconfont icon-blog"></span> <a href="https://jirengu.com">博客</a></li>
-            <li><span class="iconfont icon-zhihu"></span> <a href="https://jirengu.com">知乎</a></li>
-          </ul>
-      </div>
+            <li><span class="iconfont icon-email"></span> 706695013@qq.com</li>
+            <li><span class="iconfont icon-phone"></span> 18895787787</li>
+            <li><span class="iconfont icon-experience"></span> 2年前端经验</li>
+            <li><span class="iconfont icon-education"></span> 北京外国语大学</li>
+        </ul>
+        <div class="skills">
+            <h2>我的技能</h2>
+            <dl>
+                <dt>JavaScript/HTML5/CSS3/SVG</dt>
+                <dd><span class="mastery" style="width: 90%"></span></dd>
+                <dt>Vue/Vuex/Vue-router/Vue CLI</dt>
+                <dd><span class="mastery" style="width: 80%"></span></dd>
+                <dt>jQuery/Ajax</dt>
+                <dd><span class="mastery" style="width: 85%"></span></dd>
+                <dt>Java/Git/Svn</dt>
+                <dd><span class="mastery" style="width: 50%"></span></dd>
+                <dt>Webpack/Parcel/Npm/Yarn</dt>
+                <dd><span class="mastery" style="width: 60%"></span></dd>
+                <dt>ES6/Scss/Less/Http</dt>
+                <dd><span class="mastery" style="width: 75%"></span></dd>
+                <dt>TypeScript</dt>
+                <dd><span class="mastery" style="width: 50%"></span></dd>
+            </dl>
+        </div>
+        <div class="others">
+            <h2>其他</h2>
+            <ul class="contact">
+                <li>
+                    <span class="iconfont icon-github"></span> <a href="https://github.com/myl2017?tab=repositories">Github</a>
+                </li>
+                <li>
+                    <span class="iconfont icon-blog"></span> <a href="https://www.jianshu.com/u/fe3f521204e0">博客</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="main">
-      <div class="intro clearfix">
-        <img src="https://via.placeholder.com/80.png" alt="">
-        <p>1年前端开发经验，熟悉Vue技术栈，熟悉模块化、工程化开发流程，Webpack的配置小能手，熟练使用ES6写代码，有小程序、移动端开发经验</p>
-      
-      </div>
-      <div class="education section">
-        <h2>教育经历</h2>
-        <div class="item">
-            <div class="left pill">09/2013 - 07/2017</div>
-            <div class="more">
-              <h3><strong>电子科技大学</strong>, 985、211</h3>
-              <ul>
-                <li>专业排名前20%</li>
-              </ul>
-  
-            </div>
-      </div>
-      <div class="experience section">
-        <h2>工作经历</h2>
-        <div class="detail">
-          <div class="left pill">01/2016 - 现在</div>
-          <div class="more">
-            <h3><strong>杭州饥人谷教育科技有限公司</strong>, 前端开发工程师</h3>
-            <ul>
-              <li>工作期间参与开发和维护饥人谷官网、课程平台、移动端网站、小程序，为数千同学线上学习提供技术支撑</li>
-              <li>公司前端编码规范的制定、前端UI组件库的沉淀</li>
-              <li>多次作为项目负责人主导项目立项到上线整个过程</li>
-            </ul>
-            <h4>写代码啦课程平台Web端项目</h4>
-            <ul>
-              <li><strong>项目介绍：</strong> 该项目的目的是搭建线上学习平台，把线下课堂的完整学习流程搬到线上，平台包括课程展示、购买、直播、录播、作业、权限管理、停课复课、试听等几十个大功能。该项目采用前后分离的技术方案，
-                  我主要负责前端部分的开发。项目前端部分使用Vue技术栈，移动端平台使用自己实现的vue ui组件库。</li>
-              <li><strong>技术栈：</strong>vue、vue-router、vuex、element-ui、typescript、webpack、es6、移动端</li>
-              <li><strong>项目成果:</strong> 项目支撑饥人谷日常教学活动、运营活动的正常开展，支持数千学生的日常线上学习，几十万用户的日常访问。</li>
-            </ul>
-
-            <h4>写代码啦课程平台小程序项目</h4>
-            <ul>
-                <li><strong>项目介绍：</strong> 该项目是线上学习平台的小程序版本，拥有web版本的绝大多数的功能，如课程分类、搜索、任务学习、直播等。项目使用mpvue作为开发的主要框架，目前小程序已发布。</li>
-                <li><strong>技术栈：</strong>mpvue/vue/vuex/webpack/es6</li>
-                <li><strong>项目成果:</strong>大大提升了移动端学习体验，获得学生用户的多次好评，为微信端运营提供技术支撑</li>
-            </ul>
-
-
-          </div>
+        <div class="intro clearfix">
+            <img src="https://via.placeholder.com/80.png" alt="">
+            <p>2年前端开发经验，熟悉Vue技术栈，熟悉模块化、工程化开发流程，熟悉Webpack的配置，熟练使用ES6写代码，有小程序、移动端、PC端、App端开发经验</p>
         </div>
-      </div>
-      <div class="projects section">
-        <h2>项目经历</h2>
-        <div class="item">
-          <div class="left pill">02/2018 - 04/2018</div>
-          <div class="more">
-            <h3>vue技术栈实现cnode社区</h3>
-            <ul>
-                <li><strong>项目介绍：</strong> 为什么做这个项目(解决了什么问题)，提供了哪些功能。我在项目中承担的角色，用到了哪些技术，做了过程中遇到了什么问题，你是如何解决的，在代码复用性、体验、性能、ui上做了哪些优化</li>
-                <li><strong>技术栈：</strong>vue、vue-router、vuex、element-ui、webpack、es6</li>
-                <li><strong>项目源码:</strong><a href="https://jirengu.com" target="_blank">github.com/jirengu</a></li>
-                <li><strong>预览项目:</strong><a href="https://jirengu.com" target="_blank">点击查看</a></li>
-            </ul>
-
-          </div>
-        </div>
-        <div class="item">
-            <div class="left pill">07/2018 - 08/2018</div>
-            <div class="more">
-              <h3>知心天气小程序</h3>
-              <ul>
-                  <li><strong>项目介绍：</strong> 为什么做这个项目(解决了什么问题)，提供了哪些功能。我在项目中承担的角色，用到了哪些技术，做了过程中遇到了什么问题，你是如何解决的，在代码复用性、体验、性能、ui上做了哪些优化</li>
-                  <li><strong>技术栈：</strong>vue、vue-router、vuex、element-ui、webpack、es6</li>
-                  <li><strong>项目源码:</strong><a href="https://jirengu.com" target="_blank">github.com/jirengu</a></li>
-                  <li><strong>预览项目:</strong><a href="https://jirengu.com" target="_blank">点击查看</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="item">
-              <div class="left pill">08/2018 - 10/2018</div>
-              <div class="more">
-                <h3>在线云笔记</h3>
-                <ul>
-                    <li><strong>项目介绍：</strong> 为什么做这个项目(解决了什么问题)，提供了哪些功能。我在项目中承担的角色，用到了哪些技术，做了过程中遇到了什么问题，你是如何解决的，在代码复用性、体验、性能、ui上做了哪些优化</li>
-                    <li><strong>技术栈：</strong>vue、vue-router、vuex、element-ui、webpack、es6</li>
-                    <li><strong>项目源码:</strong><a href="https://jirengu.com" target="_blank">github.com/jirengu</a></li>
-                    <li><strong>预览项目:</strong><a href="https://jirengu.com" target="_blank">点击查看</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="item">
-                <div class="left pill">02/2018 - 08/2018</div>
-                <div class="more">
-                  <h3>easyui一款简易vue ui组件库</h3>
-                  <ul>
-                      <li><strong>项目介绍：</strong> 为什么做这个项目(解决了什么问题)，提供了哪些功能。我在项目中承担的角色，用到了哪些技术，做了过程中遇到了什么问题，你是如何解决的，在代码复用性、体验、性能、ui上做了哪些优化</li>
-                      <li><strong>技术栈：</strong>vue、vue-router、vuex、element-ui、webpack、es6</li>
-                      <li><strong>项目源码:</strong><a href="https://jirengu.com" target="_blank">github.com/jirengu</a></li>
-                      <li><strong>预览项目:</strong><a href="https://jirengu.com" target="_blank">点击查看</a></li>
-                  </ul>
+        <div class="education section">
+            <div class="experience section">
+                <h2>工作经历</h2>
+                <div class="detail">
+                    <div class="left pill">2018/10 - 2019/12</div>
+                    <div class="more">
+                        <h3><strong class="company-intro">南京胜天易融信息技术有限公司</strong>，前端开发工程师</h3>
+                        <ul>
+                            <li>工作期间参与开发和维护南京银行app端、南京银行后台管理PC端、江苏银行app端、小程序，为用户提供线上商品购买服务</li>
+                            <li>曾负责公司小程序端、前端UI设计、编码、发布</li>
+                            <li>参与项目的开发、维护、测试工作</li>
+                        </ul>
+                        <h4>南京银行鑫e商城</h4>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                南京银行app端老商城功能开发、维护、测试，包括商品分类展示、商品活动、商品积分改价、优惠券、话费充值、抽奖、品牌馆、限时秒杀商品、线下商户支付、用户白名单等功能。
+                                南京银行app端新版商城，该项目采用前后端分离的技术方案，我主要负责商城首页、商城活动、电子券、屈臣氏专区、惠农扶贫、数据埋点、结果页跳转、商城头部公共组件等功能，项目前端部分使用Vue技术栈，使用cube
+                                ui组件库。
+                            </li>
+                            <li><strong>技术栈：</strong>vue、vue-router、vuex、cube-ui、javascript、webpack、es6、移动端</li>
+                            <li><strong>项目成果:</strong> 项目支撑南京银行鑫e商城、运营活动的正常开展，支持数万用户线上购物，几十万用户的日常访问。</li>
+                        </ul>
+                        <h4>线下网点小程序</h4>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                该项目是鑫e商城线下网点小程序项目，拥有移动商城的绝大多数的功能，如商品列表、商品详情、购物车、提交订单、确认订单、订单详情、订单处理、商品库存、保存商品链接二维码图片等。目前小程序已发布。
+                            </li>
+                            <li><strong>技术栈：</strong>es6/css3/canvas</li>
+                            <li><strong>项目成果:</strong>为公司运营提供线下网点小程序端技术支撑</li>
+                        </ul>
+                        <h4>南京银行后台管理平台</h4>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                该项目是鑫e商城后台管理系统，负责了管理系统汽车生活订单管理、线下网点商户订单管理、水电煤订单管理、商户活动配置、饭票、优惠券、文件管理系统、数据字典、首页推荐等功能的开发及系统测试维护。
+                            </li>
+                            <li><strong>技术栈：</strong>vue、vue-router、vuex、element-ui、javascript、webpack、es6、PC端</li>
+                            <li><strong>项目成果:</strong>为公司运营提供线上商城商品管理、商品分类、改价、商品活动，PC端技术支撑</li>
+                        </ul>
+                        <h4>江苏银行苏银豆商城</h4>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                江苏银行苏银豆商城功能开发、维护、测试，包括商城首页、商品分类展示、商品详情、商城抽奖、数据埋点、商品活动、电子券、商城头部公共组件等功能。
+                                苏银豆商城，该项目采用前后端分离的技术方案，项目前端部分使用Vue技术栈，使用cube ui组件库。项目迭代修复，像素级还原。
+                            </li>
+                            <li><strong>技术栈：</strong>vue、vue-router、vuex、cube-ui、javascript、webpack、es6、移动端</li>
+                            <li><strong>项目成果:</strong> 项目支撑江苏银行app苏银豆商城、运营活动的正常开展，支持数万用户线上购物，几十万用户的日常访问。</li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
-      </div>
-      <div class="about-me section">
-        <h2>个人评价</h2>
-        <p>痴迷新技术，喜欢承担有技术难度的工作，爱分享，善于知识总结梳理</p>
-      </div>
+                <div class="detail">
+                    <div class="left pill">2017/10 - 2018/10</div>
+                    <div class="more">
+                        <h3><strong class="company-intro">南京众越信息科技有限公司</strong>，前端开发工程师</h3>
+                        <ul>
+                            <li>工作期间参与开发和维护江苏省灭火救援预案系统(web应用)、救援指挥巡检(移动端)、江苏省城安民防局官网(PC端)</li>
+                            <li>参与项目的开发、维护、测试工作</li>
+                        </ul>
+                        <h4>江苏省灭火救援预案系统(PC端)</h4>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                负责企业灭火救援预案系统重要模块的开发和维护，负责重点单位、预案制作、救援指挥、预案管理等模块的需求开发。除了完成需求的开发任务还有PC端不同分辨率、不同浏览器兼容性和响应式调试开发、系统BUG调试修复。
+                            </li>
+                            <li><strong>技术栈：</strong>HTML5 + CSS3 + jQuery+ Bootstrap + Layer + Semantic + MySQL</li>
+                            <li><strong>项目成果:</strong>项目支撑政府机构灭火救援服务。</li>
+                        </ul>
+                        <h4>救援指挥巡检(移动端)</h4>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                负责PAD端巡检模块的开发。主要使用轮播的自动播放、图片上传、图片放大查看、查看企业详情信息、新增、状态审核、及巡检下子模块的开发等功能。使用了动态rem方案兼容适配不同分辨下的显示。
+                            </li>
+                            <li><strong>技术栈：</strong>javascript/css3/rem</li>
+                            <li><strong>项目成果:</strong>为公司运营提供灭火救援系统PAD端技术支撑</li>
+                        </ul>
+                        <h4>江苏省城安民防局官网(PC端)</h4>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                负责了江苏省城安民防局官网，整个官网的开发、维护和调试。
+                            </li>
+                            <li><strong>技术栈：</strong>html5、css3、es6</li>
+                            <li><strong>项目成果:</strong>为江苏省城安民防局提供技术支撑，让民众了解民防信息</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="projects section">
+                <h2>项目经历</h2>
+                <div class="item">
+                    <div class="left pill">2020/01 - 2020/02</div>
+                    <div class="more">
+                        <h3>旺财记账</h3>
+                        <ul>
+                            <li><strong>项目介绍：</strong>
+                                使用了Vue和TypeScript实现的一款记账项目，包括记账：金额、标签、备注、收入还是支出。管理标签：添加、改名、删除 。查看历史：按天、按周、按月
+                                。持久化：页面关闭再打开，数据不消失(localStorage)等功能。使用到了Vue
+                                CLI实现项目搭建、Scss、组件封装、模块化编程、组件通信、localStroage做数据存储、数据管理、深拷贝等技术。
+                            </li>
+                            <li><strong>技术栈：</strong>vue、vue-router、vuex、webpack、typescript、svg、css3</li>
+                            <li><strong>项目源码:</strong><a href="https://github.com/myl2017/morney"
+                                                         target="_blank">https://github.com/myl2017/morney</a></li>
+                            <li><strong>预览项目:</strong><a href="https://github.com/myl2017/morney"
+                                                         target="_blank">点击查看</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="about-me section">
+                <h2>个人评价</h2>
+                <p>对新技术有好奇心，善于学习，热爱学习</p>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
 </html>
